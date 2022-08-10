@@ -15,7 +15,9 @@ class ThemeColors {
 
   static Color get black => const Color(0XFF000000);
 
-  static Color get lightgrey => Color(0xFFE8E8E8);
+  static Color get black87 => const Color(0xDD000000);
+
+  static Color get lightgrey => Color(0xFFF4F3F3);
 
   static Color get white => const Color(0XFFFFFFFF);
 }
