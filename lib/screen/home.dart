@@ -3,10 +3,14 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:practice_ui/helper/config/themes/app_text_style.dart';
 import 'package:practice_ui/helper/utility.dart';
+import 'package:practice_ui/screen/buttonAnimation/buttonAnimation.dart';
 import 'package:practice_ui/screen/foodDelivery/foodDelivery.dart';
 import 'package:practice_ui/screen/inspiration/inspiration.dart';
 import 'package:practice_ui/screen/pageAnimation/pageAnimation.dart';
+import 'package:practice_ui/screen/pageTransition/pageTransition.dart';
+import 'package:practice_ui/screen/partyAndSplash/partyAndSplash.dart';
 import 'package:practice_ui/screen/rippleAnimation/rippleAnimation.dart';
+import 'package:practice_ui/screen/splashAndLogin/splashAndLogin.dart';
 import 'package:practice_ui/screen/userProfile/userProfile.dart';
 
 class HomePage extends StatefulWidget {
@@ -62,19 +66,29 @@ class _HomePageState extends State<HomePage> {
               page: RippleAnimation(),
             ),
             RouteText(
-              text: "PageAnimation Trip",
+              text: "PageTransition Trip",
               number: 6,
-              page: PageAnimation(),
+              page: PageTransition(),
             ),
             RouteText(
-              text: "Food Delivery App",
+              text: "Button Animation",
               number: 7,
-              page: StarterPage(),
+              page: ButtonAnimation(),
             ),
             RouteText(
-              text: "User Profile App",
+              text: "Splash and Login App",
               number: 8,
-              page: UserProflie(),
+              page: SplashAndLogin(),
+            ),
+            RouteText(
+              text: "Party App & Splash",
+              number: 9,
+              page: PartyAndSplash(),
+            ),
+            RouteText(
+              text: "Splash and Login App",
+              number: 10,
+              page: SplashAndLogin(),
             ),
           ],
         ),

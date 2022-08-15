@@ -97,7 +97,7 @@ class _UserProflieState extends State<UserProflie> {
               ),
               SliverList(
                 delegate: SliverChildBuilderDelegate(
-                  childCount: 1,
+                  childCount: 2,
                   (BuildContext context, int index) {
                     return Padding(
                       padding: const EdgeInsets.all(20),
