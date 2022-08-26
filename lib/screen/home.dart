@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:practice_ui/helper/config/themes/app_text_style.dart';
 import 'package:practice_ui/helper/utility.dart';
+import 'package:practice_ui/screen/Login&SingUP/main.dart';
+import 'package:practice_ui/screen/TestDrawer/testDrawer.dart';
+import 'package:practice_ui/screen/appWithIndicator/appWithIndicator.dart';
 import 'package:practice_ui/screen/buttonAnimation/buttonAnimation.dart';
+import 'package:practice_ui/screen/carousel/carousel.dart';
+import 'package:practice_ui/screen/e-commerce/e-commerce.dart';
 import 'package:practice_ui/screen/foodDelivery/foodDelivery.dart';
+import 'package:practice_ui/screen/homeService/page/start.dart';
 import 'package:practice_ui/screen/inspiration/inspiration.dart';
+import 'package:practice_ui/screen/loginPage/loginPage1.dart';
+import 'package:practice_ui/screen/loginPage/loginPage2.dart';
+import 'package:practice_ui/screen/matrix4Test/matrix4Test1.dart';
 import 'package:practice_ui/screen/pageAnimation/pageAnimation.dart';
 import 'package:practice_ui/screen/pageTransition/pageTransition.dart';
 import 'package:practice_ui/screen/partyAndSplash/partyAndSplash.dart';
 import 'package:practice_ui/screen/rippleAnimation/rippleAnimation.dart';
+import 'package:practice_ui/screen/shoeShop/shoeShop.dart';
+import 'package:practice_ui/screen/sockShop/sockShop.dart';
 import 'package:practice_ui/screen/splashAndLogin/splashAndLogin.dart';
+import 'package:practice_ui/screen/travel/travel.dart';
 import 'package:practice_ui/screen/userProfile/userProfile.dart';
+import 'package:practice_ui/screen/widgetAnimation/widgetAnimation.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -27,7 +38,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 10,
-        shadowColor: Color(0xFFEDEDED),
+        shadowColor: const Color(0xFFEDEDED),
         title: Text(
           "Practices Flutter UI",
           style: AppTextStyle.header1(),
@@ -36,59 +47,134 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: ListView(
           physics: const ClampingScrollPhysics(),
-          children: const [
-            SizedBox(
+          children: [
+            const SizedBox(
               height: 20,
             ),
-            RouteText(
+            const RouteText(
               text: "Inspiration App",
               number: 1,
               page: Inspiration(),
             ),
-            RouteText(
+            const RouteText(
               text: "PageAnimation Trip",
               number: 2,
               page: PageAnimation(),
             ),
-            RouteText(
+            const RouteText(
               text: "Food Delivery App",
               number: 3,
               page: StarterPage(),
             ),
-            RouteText(
+            const RouteText(
               text: "User Profile App",
               number: 4,
               page: UserProflie(),
             ),
-            RouteText(
+            const RouteText(
               text: "Ripple Animation",
               number: 5,
               page: RippleAnimation(),
             ),
-            RouteText(
+            const RouteText(
               text: "PageTransition Trip",
               number: 6,
               page: PageTransition(),
             ),
-            RouteText(
+            const RouteText(
               text: "Button Animation",
               number: 7,
               page: ButtonAnimation(),
             ),
-            RouteText(
+            const RouteText(
               text: "Splash and Login App",
               number: 8,
               page: SplashAndLogin(),
             ),
-            RouteText(
+            const RouteText(
               text: "Party App & Splash",
               number: 9,
               page: PartyAndSplash(),
             ),
-            RouteText(
-              text: "Splash and Login App",
+            const RouteText(
+              text: "Travel App",
               number: 10,
-              page: SplashAndLogin(),
+              page: TravelPage(),
+            ),
+            const RouteText(
+              text: "Login Page 1",
+              number: 11,
+              page: LoginPage1(),
+            ),
+            const RouteText(
+              text: "Login Page 2",
+              number: 12,
+              page: LoginPage2(),
+            ),
+            const RouteText(
+              text: "Shoe Shopping App",
+              number: 13,
+              page: ShoeShop(),
+            ),
+            const RouteText(
+              text: "E-commerce App",
+              number: 14,
+              page: EComApp(),
+            ),
+            const RouteText(
+              text: "Carousel & Animation",
+              number: 15,
+              page: CarouselTest(),
+            ),
+            const RouteText(
+              text: "Socks Shop App",
+              number: 16,
+              page: SocksShop(),
+            ),
+            const RouteText(
+              text: "App With Indicator",
+              number: 17,
+              page: AppWithIndicator(),
+            ),
+            const RouteText(
+              text: "Login And SignUp Page",
+              number: 18,
+              page: MainLoginNSignUp(),
+            ),
+            const RouteText(
+              text: "Home Services App",
+              number: 19,
+              page: StartPage(),
+            ),
+            const RouteText(
+              text: "Widget Animation",
+              number: 20,
+              page: WidgetAni(),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+              child: Text(
+                'Matrix4 Practice',
+                style: AppTextStyle.body1(),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  RouteText(
+                    text: "Rotation",
+                    number: 1,
+                    page: TestMatrixSimple(),
+                  ),
+                  RouteText(
+                    text: "Drawer",
+                    number: 2,
+                    page: TestDrawer(),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
