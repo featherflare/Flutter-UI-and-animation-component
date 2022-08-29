@@ -22,6 +22,7 @@ import 'package:practice_ui/screen/sockShop/sockShop.dart';
 import 'package:practice_ui/screen/splashAndLogin/splashAndLogin.dart';
 import 'package:practice_ui/screen/travel/travel.dart';
 import 'package:practice_ui/screen/userProfile/userProfile.dart';
+import 'package:practice_ui/screen/wallet/wallet.dart';
 import 'package:practice_ui/screen/widgetAnimation/widgetAnimation.dart';
 
 class HomePage extends StatefulWidget {
@@ -150,6 +151,11 @@ class _HomePageState extends State<HomePage> {
               text: "Widget Animation",
               number: 20,
               page: WidgetAni(),
+            ),
+            const RouteText(
+              text: "Wallet App",
+              number: 21,
+              page: WalletApp(),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),

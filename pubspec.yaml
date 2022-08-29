@@ -36,6 +36,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   simple_animations: ^4.2.0
   scrollable_positioned_list: ^0.3.2
+  iconsax: ^0.0.8
+  align_positioned: ^3.0.0
+  pattern_formatter: ^2.0.0
+  custom_info_window: ^1.0.1
+  google_maps_flutter: ^2.1.12
 
 dev_dependencies:
   flutter_test:
