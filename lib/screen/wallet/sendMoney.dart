@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pattern_formatter/pattern_formatter.dart';
-import 'package:practice_ui/helper/fadeAnimation.dart';
+
+import '../../helper/AnimationWidget/fadeAnimation.dart';
 
 class SendMoney extends StatefulWidget {
   final String name;

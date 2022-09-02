@@ -30,12 +30,12 @@ class RouteText extends StatelessWidget {
               text: text,
               style: AppTextStyle.body1(),
               recognizer: TapGestureRecognizer()
-                ..onTap = () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => page,
-                      ),
+                ..onTap = () => Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => page,
                     ),
+                    (Route<dynamic> route) => false),
             ),
           ],
         ),

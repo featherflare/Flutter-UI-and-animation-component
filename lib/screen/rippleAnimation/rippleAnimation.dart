@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:practice_ui/helper/animateWidget.dart';
+import 'package:practice_ui/helper/AnimationWidget/animateWidget.dart';
 
 class RippleAnimation extends StatefulWidget {
   const RippleAnimation({Key? key}) : super(key: key);

@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:practice_ui/helper/config/themes/app_text_style.dart';
 import 'package:practice_ui/helper/utility.dart';
+import 'package:practice_ui/screen/Clipper/clipper.dart';
+import 'package:practice_ui/screen/LibTest/ConcentricTransition/ConcentricTransition.dart';
+import 'package:practice_ui/screen/LibTest/Odometer/Odometer.dart';
+import 'package:practice_ui/screen/LibTest/StaggeredGridViewExample/StaggeredGridViewExample.dart';
 import 'package:practice_ui/screen/Login&SingUP/main.dart';
-import 'package:practice_ui/screen/TestDrawer/testDrawer.dart';
+import 'package:practice_ui/screen/TestWidget/testCurveNavigationBar.dart';
+import 'package:practice_ui/screen/TestWidget/testDrawer.dart';
+import 'package:practice_ui/screen/TestWidget/testElastic.dart';
+import 'package:practice_ui/screen/TestWidget/testRunNum.dart';
 import 'package:practice_ui/screen/appWithIndicator/appWithIndicator.dart';
 import 'package:practice_ui/screen/buttonAnimation/buttonAnimation.dart';
 import 'package:practice_ui/screen/carousel/carousel.dart';
 import 'package:practice_ui/screen/e-commerce/e-commerce.dart';
 import 'package:practice_ui/screen/foodDelivery/foodDelivery.dart';
+import 'package:practice_ui/screen/googleMap/GoogleMap.dart';
+import 'package:practice_ui/screen/googleMap/pages/map_circles.dart';
 import 'package:practice_ui/screen/homeService/page/start.dart';
 import 'package:practice_ui/screen/inspiration/inspiration.dart';
 import 'package:practice_ui/screen/loginPage/loginPage1.dart';
@@ -157,10 +166,15 @@ class _HomePageState extends State<HomePage> {
               number: 21,
               page: WalletApp(),
             ),
+            const RouteText(
+              text: "Clipper Practice",
+              number: 22,
+              page: ClipperTest(),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
               child: Text(
-                'Matrix4 Practice',
+                'Package Interest',
                 style: AppTextStyle.body1(),
               ),
             ),
@@ -170,7 +184,37 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   RouteText(
-                    text: "Rotation",
+                    text: "ConcentricTransition",
+                    number: 1,
+                    page: ConcentricTransition(),
+                  ),
+                  RouteText(
+                    text: "Odometer",
+                    number: 2,
+                    page: OdometerTest(),
+                  ),
+                  RouteText(
+                    text: "StaggeredGridView",
+                    number: 3,
+                    page: StaggeredGridViewExample(),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+              child: Text(
+                'Widget Animation',
+                style: AppTextStyle.body1(),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  RouteText(
+                    text: "Matrix4 Rotation",
                     number: 1,
                     page: TestMatrixSimple(),
                   ),
@@ -178,6 +222,21 @@ class _HomePageState extends State<HomePage> {
                     text: "Drawer",
                     number: 2,
                     page: TestDrawer(),
+                  ),
+                  RouteText(
+                    text: "Elastic Drawer",
+                    number: 3,
+                    page: TestElastic(),
+                  ),
+                  RouteText(
+                    text: "Count Numbers",
+                    number: 4,
+                    page: TestRunNum(),
+                  ),
+                  RouteText(
+                    text: "Curve NavBar",
+                    number: 4,
+                    page: TestCurveNavBar(),
                   ),
                 ],
               ),

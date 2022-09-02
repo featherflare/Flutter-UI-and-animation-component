@@ -4,7 +4,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:practice_ui/screen/wallet/sendMoney.dart';
 
-import '../../helper/fadeAnimation.dart';
+import '../../helper/AnimationWidget/fadeAnimation.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({Key? key}) : super(key: key);
