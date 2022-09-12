@@ -12,18 +12,19 @@ class TestCurveNavBar extends StatefulWidget {
 class _TestCurveNavBarState extends State<TestCurveNavBar> {
   int _page = 0;
   GlobalKey<_CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+  List<Widget> items = [
+    Icon(Icons.add, size: 30),
+    Icon(Icons.list, size: 30),
+    Icon(Icons.compare_arrows, size: 30),
+    Icon(Icons.call_split, size: 30),
+    Icon(Icons.perm_identity, size: 30),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
-        items: [
-          Icon(Icons.add, size: 30),
-          Icon(Icons.list, size: 30),
-          Icon(Icons.compare_arrows, size: 30),
-          Icon(Icons.call_split, size: 30),
-          Icon(Icons.perm_identity, size: 30),
-        ],
+        items: items,
         color: Colors.white,
         buttonBackgroundColor: Colors.white,
         backgroundColor: Colors.blueAccent,
@@ -54,12 +55,48 @@ class _TestCurveNavBarState extends State<TestCurveNavBar> {
                       _bottomNavigationKey.currentState;
                   navBarState?.setPage(1);
                 },
-              )
+              ),
+              SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildIndicator(
+                  primaryColor: Colors.white,
+                  secondaryColor: Colors.grey.shade400,
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  _indicator(bool isActive, Color primaryColor, Color secondaryColor) {
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 300),
+      height: 6,
+      width: isActive ? 50 : 10,
+      margin: EdgeInsets.only(right: 5),
+      decoration: BoxDecoration(
+        color: isActive ? primaryColor : secondaryColor,
+        borderRadius: BorderRadius.circular(5),
+      ),
+    );
+  }
+
+  List<Widget> _buildIndicator({
+    Color primaryColor = Colors.black,
+    Color secondaryColor = Colors.grey,
+  }) {
+    List<Widget> indicators = [];
+    for (int i = 0; i < items.length; i++) {
+      if (_page == i) {
+        indicators.add(_indicator(true, primaryColor, secondaryColor));
+      } else {
+        indicators.add(_indicator(false, primaryColor, secondaryColor));
+      }
+    }
+    return indicators;
   }
 }
 
@@ -164,33 +201,18 @@ class _CurvedNavigationBarState extends State<CurvedNavigationBar>
         clipBehavior: Clip.none,
         alignment: Alignment.bottomCenter,
         children: [
-          Positioned(
-            bottom: -40 - (75.0 - widget.height),
-            left: Directionality.of(context) == TextDirection.rtl
-                ? null
-                : _pos * size.width,
-            right: Directionality.of(context) == TextDirection.rtl
-                ? _pos * size.width
-                : null,
-            width: size.width / _length,
-            child: Center(
-              child: Transform.translate(
-                offset: Offset(
-                  0,
-                  -(1 - _buttonHide) * 80,
-                ),
-                child: Material(
-                  elevation: widget.elevation,
-                  color: widget.buttonBackgroundColor ?? widget.color,
-                  type: MaterialType.circle,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: _icon,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          // Positioned(
+          //   bottom: -40 - (75.0 - widget.height),
+          //   child: Material(
+          //     elevation: widget.elevation,
+          //     color: widget.buttonBackgroundColor ?? widget.color,
+          //     type: MaterialType.circle,
+          //     child: Padding(
+          //       padding: const EdgeInsets.all(8.0),
+          //       child: widget.items[3],
+          //     ),
+          //   ),
+          // ),
           Positioned(
             left: 0,
             right: 0,
@@ -220,6 +242,67 @@ class _CurvedNavigationBarState extends State<CurvedNavigationBar>
                   );
                 }).toList())),
           ),
+          Positioned(
+            bottom: -40 - (75.0 - widget.height),
+            left: Directionality.of(context) == TextDirection.rtl
+                ? null
+                : _pos * size.width,
+            right: Directionality.of(context) == TextDirection.rtl
+                ? _pos * size.width
+                : null,
+            width: size.width / _length,
+            child: Center(
+              child: Transform.translate(
+                offset: _pos == 0.4
+                    ? Offset(
+                        0,
+                        -(1 - _buttonHide) * 70,
+                      )
+                    : Offset(
+                        0,
+                        -(1 - _buttonHide) * 80,
+                      ),
+                child: Material(
+                  elevation: widget.elevation,
+                  color: widget.buttonBackgroundColor ?? widget.color,
+                  type: MaterialType.circle,
+                  child: Transform.scale(
+                    scale: _pos == 0.4 ? 1.2 : 1,
+                    child: AnimatedPadding(
+                      duration: Duration(milliseconds: 100),
+                      padding: _pos == 0.4
+                          ? const EdgeInsets.all(20.0)
+                          : const EdgeInsets.all(8.0),
+                      child: _icon,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // Positioned(
+          //   bottom: 30,
+          //   child: Material(
+          //     elevation: 0,
+          //     color: widget.buttonBackgroundColor ?? widget.color,
+          //     type: MaterialType.canvas,
+          //     borderRadius: BorderRadius.circular(100),
+          //     child: Transform.scale(
+          //       scale: _pos == 0.4 ? 1.2 : 1,
+          //       child: GestureDetector(
+          //         onTap: () {
+          //           _buttonTap(2);
+          //         },
+          //         child: Padding(
+          //           padding: _pos == 0.4
+          //               ? const EdgeInsets.all(20.0)
+          //               : const EdgeInsets.all(8.0),
+          //           child: Icon(Icons.compare_arrows, size: 40),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
@@ -251,13 +334,15 @@ class NavCustomPainter extends CustomPainter {
   late double s;
   Color color;
   TextDirection textDirection;
+  late double size1;
 
   NavCustomPainter(
       double startingLoc, int itemsLength, this.color, this.textDirection) {
     final span = 1.0 / itemsLength;
-    s = 0.2;
+    s = startingLoc == 0.4 ? 0 : 0.2;
     double l = startingLoc + (span - s) / 2;
     loc = textDirection == TextDirection.rtl ? 0.8 - l : l;
+    size1 = startingLoc == 0.4 ? 1 : 1;
   }
 
   @override
@@ -271,17 +356,17 @@ class NavCustomPainter extends CustomPainter {
       ..lineTo((loc - 0.1) * size.width, 0)
       ..cubicTo(
         (loc + s * 0.20) * size.width,
-        size.height * 0.05,
+        size.height * 0.05 * size1,
         loc * size.width,
-        size.height * 0.60,
+        size.height * 0.60 * size1,
         (loc + s * 0.50) * size.width,
-        size.height * 0.60,
+        size.height * 0.60 * size1,
       )
       ..cubicTo(
         (loc + s) * size.width,
-        size.height * 0.60,
+        size.height * 0.60 * size1,
         (loc + s - s * 0.20) * size.width,
-        size.height * 0.05,
+        size.height * 0.05 * size1,
         (loc + s + 0.1) * size.width,
         0,
       )
