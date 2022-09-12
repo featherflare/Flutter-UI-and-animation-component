@@ -3,6 +3,7 @@ import 'package:practice_ui/helper/config/themes/app_text_style.dart';
 import 'package:practice_ui/helper/utility.dart';
 import 'package:practice_ui/screen/Clipper/clipper.dart';
 import 'package:practice_ui/screen/LibTest/ConcentricTransition/ConcentricTransition.dart';
+import 'package:practice_ui/screen/LibTest/LiquidSwipe/LiquidSwipeExample.dart';
 import 'package:practice_ui/screen/LibTest/Odometer/Odometer.dart';
 import 'package:practice_ui/screen/LibTest/StaggeredGridViewExample/StaggeredGridViewExample.dart';
 import 'package:practice_ui/screen/Login&SingUP/main.dart';
@@ -10,6 +11,17 @@ import 'package:practice_ui/screen/TestWidget/testCurveNavigationBar.dart';
 import 'package:practice_ui/screen/TestWidget/testDrawer.dart';
 import 'package:practice_ui/screen/TestWidget/testElastic.dart';
 import 'package:practice_ui/screen/TestWidget/testRunNum.dart';
+import 'package:practice_ui/screen/Widget%20Learning/1.%20TextStyle/testTextStyle.dart';
+import 'package:practice_ui/screen/Widget%20Learning/10.%20PhysicalModel/testPhysicalModel.dart';
+import 'package:practice_ui/screen/Widget%20Learning/11.%20ImageFiltered/testImageFiltered.dart';
+import 'package:practice_ui/screen/Widget%20Learning/2.%20AutoComplete/testAutoComplete.dart';
+import 'package:practice_ui/screen/Widget%20Learning/3.%20NavigationRail/testNavigationRail.dart';
+import 'package:practice_ui/screen/Widget%20Learning/4.%20FocusableActionDetector/testFocusableActionDetector.dart';
+import 'package:practice_ui/screen/Widget%20Learning/5.%20ScaffoldMessenger/testScaffoldMessenger.dart';
+import 'package:practice_ui/screen/Widget%20Learning/6.%20DropDown/testDropDown.dart';
+import 'package:practice_ui/screen/Widget%20Learning/7.%20Flow/testFlow.dart';
+import 'package:practice_ui/screen/Widget%20Learning/8.%20RefreshIndicator/testRefreshIndicator.dart';
+import 'package:practice_ui/screen/Widget%20Learning/9.%20RotatedBox/testRotatedBox.dart';
 import 'package:practice_ui/screen/appWithIndicator/appWithIndicator.dart';
 import 'package:practice_ui/screen/buttonAnimation/buttonAnimation.dart';
 import 'package:practice_ui/screen/carousel/carousel.dart';
@@ -42,6 +54,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<bool> _isOpen = [
+    false,
+    false,
+    false,
+    false,
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,185 +79,302 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 20,
             ),
-            const RouteText(
-              text: "Inspiration App",
-              number: 1,
-              page: Inspiration(),
-            ),
-            const RouteText(
-              text: "PageAnimation Trip",
-              number: 2,
-              page: PageAnimation(),
-            ),
-            const RouteText(
-              text: "Food Delivery App",
-              number: 3,
-              page: StarterPage(),
-            ),
-            const RouteText(
-              text: "User Profile App",
-              number: 4,
-              page: UserProflie(),
-            ),
-            const RouteText(
-              text: "Ripple Animation",
-              number: 5,
-              page: RippleAnimation(),
-            ),
-            const RouteText(
-              text: "PageTransition Trip",
-              number: 6,
-              page: PageTransition(),
-            ),
-            const RouteText(
-              text: "Button Animation",
-              number: 7,
-              page: ButtonAnimation(),
-            ),
-            const RouteText(
-              text: "Splash and Login App",
-              number: 8,
-              page: SplashAndLogin(),
-            ),
-            const RouteText(
-              text: "Party App & Splash",
-              number: 9,
-              page: PartyAndSplash(),
-            ),
-            const RouteText(
-              text: "Travel App",
-              number: 10,
-              page: TravelPage(),
-            ),
-            const RouteText(
-              text: "Login Page 1",
-              number: 11,
-              page: LoginPage1(),
-            ),
-            const RouteText(
-              text: "Login Page 2",
-              number: 12,
-              page: LoginPage2(),
-            ),
-            const RouteText(
-              text: "Shoe Shopping App",
-              number: 13,
-              page: ShoeShop(),
-            ),
-            const RouteText(
-              text: "E-commerce App",
-              number: 14,
-              page: EComApp(),
-            ),
-            const RouteText(
-              text: "Carousel & Animation",
-              number: 15,
-              page: CarouselTest(),
-            ),
-            const RouteText(
-              text: "Socks Shop App",
-              number: 16,
-              page: SocksShop(),
-            ),
-            const RouteText(
-              text: "App With Indicator",
-              number: 17,
-              page: AppWithIndicator(),
-            ),
-            const RouteText(
-              text: "Login And SignUp Page",
-              number: 18,
-              page: MainLoginNSignUp(),
-            ),
-            const RouteText(
-              text: "Home Services App",
-              number: 19,
-              page: StartPage(),
-            ),
-            const RouteText(
-              text: "Widget Animation",
-              number: 20,
-              page: WidgetAni(),
-            ),
-            const RouteText(
-              text: "Wallet App",
-              number: 21,
-              page: WalletApp(),
-            ),
-            const RouteText(
-              text: "Clipper Practice",
-              number: 22,
-              page: ClipperTest(),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-              child: Text(
-                'Package Interest',
-                style: AppTextStyle.body1(),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  RouteText(
-                    text: "ConcentricTransition",
-                    number: 1,
-                    page: ConcentricTransition(),
+            ExpansionPanelList(
+              animationDuration: Duration(milliseconds: 500),
+              dividerColor: Colors.grey.shade50,
+              elevation: 1,
+              expandedHeaderPadding: EdgeInsets.all(0),
+              children: [
+                ExpansionPanel(
+                  canTapOnHeader: true,
+                  headerBuilder: (context, isOpen) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 40, vertical: 20),
+                      child: Text(
+                        'UI Animate Practice',
+                        style: AppTextStyle.body1(),
+                      ),
+                    );
+                  },
+                  body: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      RouteText(
+                        text: "Inspiration App",
+                        number: 1,
+                        page: Inspiration(),
+                      ),
+                      RouteText(
+                        text: "PageAnimation Trip",
+                        number: 2,
+                        page: PageAnimation(),
+                      ),
+                      RouteText(
+                        text: "Food Delivery App",
+                        number: 3,
+                        page: StarterPage(),
+                      ),
+                      RouteText(
+                        text: "User Profile App",
+                        number: 4,
+                        page: UserProflie(),
+                      ),
+                      RouteText(
+                        text: "Ripple Animation",
+                        number: 5,
+                        page: RippleAnimation(),
+                      ),
+                      RouteText(
+                        text: "PageTransition Trip",
+                        number: 6,
+                        page: PageTransition(),
+                      ),
+                      RouteText(
+                        text: "Button Animation",
+                        number: 7,
+                        page: ButtonAnimation(),
+                      ),
+                      RouteText(
+                        text: "Splash and Login App",
+                        number: 8,
+                        page: SplashAndLogin(),
+                      ),
+                      RouteText(
+                        text: "Party App & Splash",
+                        number: 9,
+                        page: PartyAndSplash(),
+                      ),
+                      RouteText(
+                        text: "Travel App",
+                        number: 10,
+                        page: TravelPage(),
+                      ),
+                      RouteText(
+                        text: "Login Page 1",
+                        number: 11,
+                        page: LoginPage1(),
+                      ),
+                      RouteText(
+                        text: "Login Page 2",
+                        number: 12,
+                        page: LoginPage2(),
+                      ),
+                      RouteText(
+                        text: "Shoe Shopping App",
+                        number: 13,
+                        page: ShoeShop(),
+                      ),
+                      RouteText(
+                        text: "E-commerce App",
+                        number: 14,
+                        page: EComApp(),
+                      ),
+                      RouteText(
+                        text: "Carousel & Animation",
+                        number: 15,
+                        page: CarouselTest(),
+                      ),
+                      RouteText(
+                        text: "Socks Shop App",
+                        number: 16,
+                        page: SocksShop(),
+                      ),
+                      RouteText(
+                        text: "App With Indicator",
+                        number: 17,
+                        page: AppWithIndicator(),
+                      ),
+                      RouteText(
+                        text: "Login And SignUp Page",
+                        number: 18,
+                        page: MainLoginNSignUp(),
+                      ),
+                      RouteText(
+                        text: "Home Services App",
+                        number: 19,
+                        page: StartPage(),
+                      ),
+                      RouteText(
+                        text: "Widget Animation",
+                        number: 20,
+                        page: WidgetAni(),
+                      ),
+                      RouteText(
+                        text: "Wallet App",
+                        number: 21,
+                        page: WalletApp(),
+                      ),
+                      RouteText(
+                        text: "Clipper Practice",
+                        number: 22,
+                        page: ClipperTest(),
+                      ),
+                    ],
                   ),
-                  RouteText(
-                    text: "Odometer",
-                    number: 2,
-                    page: OdometerTest(),
+                  isExpanded: _isOpen[0],
+                ),
+                ExpansionPanel(
+                  canTapOnHeader: true,
+                  headerBuilder: (context, isOpen) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 40, vertical: 20),
+                      child: Text(
+                        'Widget Learning',
+                        style: AppTextStyle.body1(),
+                      ),
+                    );
+                  },
+                  body: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      RouteText(
+                        text: "TextStyle",
+                        number: 1,
+                        page: TestTextStyle(),
+                      ),
+                      RouteText(
+                        text: "AutoComplete",
+                        number: 2,
+                        page: TestAutoComplete(),
+                      ),
+                      RouteText(
+                        text: "NavigationRail",
+                        number: 3,
+                        page: TestNavigationRail(),
+                      ),
+                      RouteText(
+                        text: "FocusableActionDetector",
+                        number: 4,
+                        page: TestFAD(),
+                      ),
+                      RouteText(
+                        text: "ScaffoldMessenger",
+                        number: 5,
+                        page: TestScaffoldMessenger(),
+                      ),
+                      RouteText(
+                        text: "DropdownButton",
+                        number: 6,
+                        page: TestDropDown(),
+                      ),
+                      RouteText(
+                        text: "Flow",
+                        number: 7,
+                        page: TestFlow(),
+                      ),
+                      RouteText(
+                        text: "RefreshIndicator",
+                        number: 8,
+                        page: TestRefreshIndicator(),
+                      ),
+                      RouteText(
+                        text: "RotatedBox",
+                        number: 9,
+                        page: TestRotatedBox(),
+                      ),
+                      RouteText(
+                        text: "PhysicalModel",
+                        number: 10,
+                        page: TestPhysicalModel(),
+                      ),
+                      RouteText(
+                        text: "ImageFiltered",
+                        number: 11,
+                        page: TestImageFiltered(),
+                      ),
+                    ],
                   ),
-                  RouteText(
-                    text: "StaggeredGridView",
-                    number: 3,
-                    page: StaggeredGridViewExample(),
+                  isExpanded: _isOpen[1],
+                ),
+                ExpansionPanel(
+                  canTapOnHeader: true,
+                  headerBuilder: (context, isOpen) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 40, vertical: 20),
+                      child: Text(
+                        'Package Interest',
+                        style: AppTextStyle.body1(),
+                      ),
+                    );
+                  },
+                  body: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      RouteText(
+                        text: "ConcentricTransition",
+                        number: 1,
+                        page: ConcentricTransition(),
+                      ),
+                      RouteText(
+                        text: "Odometer",
+                        number: 2,
+                        page: OdometerTest(),
+                      ),
+                      RouteText(
+                        text: "StaggeredGridView",
+                        number: 3,
+                        page: StaggeredGridViewExample(),
+                      ),
+                      RouteText(
+                        text: "LiquidSwipe",
+                        number: 4,
+                        page: LiquidSwipeExample(),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-              child: Text(
-                'Widget Animation',
-                style: AppTextStyle.body1(),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  RouteText(
-                    text: "Matrix4 Rotation",
-                    number: 1,
-                    page: TestMatrixSimple(),
+                  isExpanded: _isOpen[2],
+                ),
+                ExpansionPanel(
+                  canTapOnHeader: true,
+                  headerBuilder: (context, isOpen) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 40, vertical: 20),
+                      child: Text(
+                        'Widget Animation',
+                        style: AppTextStyle.body1(),
+                      ),
+                    );
+                  },
+                  body: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      RouteText(
+                        text: "Matrix4 Rotation",
+                        number: 1,
+                        page: TestMatrixSimple(),
+                      ),
+                      RouteText(
+                        text: "Drawer",
+                        number: 2,
+                        page: TestDrawer(),
+                      ),
+                      RouteText(
+                        text: "Elastic Drawer",
+                        number: 3,
+                        page: TestElastic(),
+                      ),
+                      RouteText(
+                        text: "Count Numbers",
+                        number: 4,
+                        page: TestRunNum(),
+                      ),
+                      RouteText(
+                        text: "Curve NavBar & Dot Indicator",
+                        number: 4,
+                        page: TestCurveNavBar(),
+                      ),
+                    ],
                   ),
-                  RouteText(
-                    text: "Drawer",
-                    number: 2,
-                    page: TestDrawer(),
-                  ),
-                  RouteText(
-                    text: "Elastic Drawer",
-                    number: 3,
-                    page: TestElastic(),
-                  ),
-                  RouteText(
-                    text: "Count Numbers",
-                    number: 4,
-                    page: TestRunNum(),
-                  ),
-                  RouteText(
-                    text: "Curve NavBar",
-                    number: 4,
-                    page: TestCurveNavBar(),
-                  ),
-                ],
-              ),
+                  isExpanded: _isOpen[3],
+                ),
+              ],
+              expansionCallback: (i, isOpen) => setState(() {
+                _isOpen[i] = !isOpen;
+              }),
             ),
           ],
         ),
