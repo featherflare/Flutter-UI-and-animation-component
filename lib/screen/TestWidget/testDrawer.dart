@@ -54,14 +54,14 @@ class _TestDrawerState extends State<TestDrawer> {
         width: double.infinity,
         height: double.infinity,
         color: Colors.white,
-        child: Transform.translate(
-          offset: Offset(250, 0),
-          child: Transform.rotate(
-            angle: -pi / 2,
+        child: RotatedBox(
+          quarterTurns: 3,
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
             child: Text(
-              "text",
+              "Mr.Test Test",
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
             ),
           ),
         ),

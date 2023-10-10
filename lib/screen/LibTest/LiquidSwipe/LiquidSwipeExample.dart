@@ -92,13 +92,12 @@ class _MyWidgetState extends State<LiquidSwipeExample> {
             alignment: Alignment.bottomRight,
             child: Padding(
               padding: const EdgeInsets.all(25.0),
-              child: FlatButton(
+              child: FilledButton(
                 onPressed: () {
                   liquidController.animateToPage(
                       page: pages.length - 1, duration: 700);
                 },
                 child: Text("Skip to End"),
-                color: Colors.white.withOpacity(0.01),
               ),
             ),
           ),
@@ -106,7 +105,7 @@ class _MyWidgetState extends State<LiquidSwipeExample> {
             alignment: Alignment.bottomLeft,
             child: Padding(
               padding: const EdgeInsets.all(25.0),
-              child: FlatButton(
+              child: FilledButton(
                 onPressed: () {
                   liquidController.jumpToPage(
                       page: liquidController.currentPage + 1 > pages.length - 1
@@ -114,7 +113,6 @@ class _MyWidgetState extends State<LiquidSwipeExample> {
                           : liquidController.currentPage + 1);
                 },
                 child: Text("Next"),
-                color: Colors.white.withOpacity(0.01),
               ),
             ),
           )

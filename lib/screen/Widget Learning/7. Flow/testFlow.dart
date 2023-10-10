@@ -20,6 +20,8 @@ class _TestFlowState extends State<TestFlow> {
   }
 }
 
+const double bottomsize = 80;
+
 class FlowMenu extends StatefulWidget {
   const FlowMenu({Key? key}) : super(key: key);
 
@@ -55,30 +57,37 @@ class _FlowMenuState extends State<FlowMenu>
   }
 
   Widget flowMenuItem(IconData icon) {
-    Size size = MediaQuery.of(context).size;
-    final double buttonDiameter =
-        MediaQuery.of(context).size.width / menuItems.length;
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Container(
-        width: size.width * 0.15,
-        height: size.width * 0.15,
+        width: bottomsize,
+        height: bottomsize,
         child: RawMaterialButton(
           fillColor: lastTapped == icon ? Colors.amber[700] : Colors.blue,
           splashColor: Colors.amber[100],
           shape: const CircleBorder(),
-          constraints:
-              BoxConstraints.tight(Size(buttonDiameter, buttonDiameter)),
+          constraints: BoxConstraints.tight(Size(bottomsize, bottomsize)),
           onPressed: () {
             _updateMenu(icon);
             menuAnimation.status == AnimationStatus.completed
                 ? menuAnimation.reverse()
                 : menuAnimation.forward();
           },
-          child: Icon(
-            icon,
-            color: Colors.white,
-            size: 25.0,
+          child: Column(
+            children: [
+              Transform.translate(
+                offset: Offset(0, -20),
+                child: Text('test'),
+              ),
+              Transform.translate(
+                offset: Offset(0, 10),
+                child: Icon(
+                  icon,
+                  color: Colors.white,
+                  size: 25.0,
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -110,15 +119,21 @@ class FlowMenuDelegate extends FlowDelegate {
   void paintChildren(FlowPaintingContext context) {
     double dx = 0.0;
     for (int i = 0; i < context.childCount; ++i) {
-      dx = context.getChildSize(i)!.width * 2;
-      context.paintChild(
-        i,
-        transform: Matrix4.translationValues(
-          dx * menuAnimation.value * cos((pi * 20 * i) / 180.0),
-          dx * menuAnimation.value * sin((pi * 20 * i) / 180.0),
-          0,
-        ),
-      );
+      final size = context.size;
+      // dx = context.getChildSize(i)!.width * 2;
+      context.paintChild(i,
+          transform: Matrix4.translationValues(
+            160 +
+                (cos((pi * 15 / 18) - (pi * i * 15 / 90))) *
+                    (menuAnimation.value) *
+                    180,
+            size.height -
+                420 -
+                (sin((pi * 15 / 18) - (pi * i * 15 / 90))) *
+                    (menuAnimation.value) *
+                    180,
+            0,
+          ));
     }
   }
 }

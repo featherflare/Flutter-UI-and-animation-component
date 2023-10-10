@@ -30,6 +30,46 @@ class RouteText extends StatelessWidget {
               text: text,
               style: AppTextStyle.body1(),
               recognizer: TapGestureRecognizer()
+                ..onTap = () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => page,
+                      ),
+                    ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class RouteText2 extends StatelessWidget {
+  final String text;
+  final int number;
+  final Widget page;
+  const RouteText2({
+    Key? key,
+    required this.text,
+    required this.number,
+    required this.page,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+      child: RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: "$number. ",
+              style: AppTextStyle.body1(),
+            ),
+            TextSpan(
+              text: text,
+              style: AppTextStyle.body1(),
+              recognizer: TapGestureRecognizer()
                 ..onTap = () => Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(

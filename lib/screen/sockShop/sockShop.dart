@@ -137,13 +137,8 @@ class _SocksShopState extends State<SocksShop> {
                           children: <Widget>[
                             FadeAnimation(
                               1.2,
-                              FlatButton(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                padding: const EdgeInsets.all(10),
+                              FilledButton(
                                 onPressed: () {},
-                                color: const Color.fromRGBO(251, 53, 105, 0.1),
                                 child: const Text(
                                   'Adult',
                                   style: TextStyle(
@@ -159,13 +154,8 @@ class _SocksShopState extends State<SocksShop> {
                             ),
                             FadeAnimation(
                               1.3,
-                              FlatButton(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                padding: const EdgeInsets.all(10),
+                              FilledButton(
                                 onPressed: () {},
-                                color: const Color.fromRGBO(97, 90, 90, 0.1),
                                 child: const Text(
                                   'Children',
                                   style: TextStyle(

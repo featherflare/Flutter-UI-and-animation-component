@@ -3,8 +3,6 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:simple_animations/simple_animations.dart';
 
-enum AniProps { opacity, offset }
-
 class FadeAnimation extends StatelessWidget {
   final double delay;
   final Widget child;
@@ -13,26 +11,26 @@ class FadeAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TimelineTween<AniProps> tween = TimelineTween<AniProps>()
-      ..addScene(
+    final MovieTween tween = MovieTween()
+      ..scene(
         begin: const Duration(milliseconds: 0),
         end: const Duration(milliseconds: 500),
-      ).animate(AniProps.opacity, tween: Tween(begin: 0.0, end: 1.0))
-      ..addScene(
+      ).tween('opacity', Tween(begin: 0.0, end: 1.0))
+      ..scene(
         begin: const Duration(milliseconds: 0),
         end: const Duration(milliseconds: 500),
         curve: Curves.easeOut,
-      ).animate(AniProps.offset, tween: Tween(begin: 120.0, end: 0.0));
-    return PlayAnimation<TimelineValue<AniProps>>(
+      ).tween('offset', Tween(begin: 120.0, end: 0.0));
+    return PlayAnimationBuilder<Movie>(
       delay: Duration(milliseconds: (500 * delay).round()),
       duration: tween.duration,
       tween: tween,
       child: child,
-      builder: (context, child, animation) => Opacity(
-        opacity: animation.get(AniProps.opacity),
+      builder: (context, animation, child) => Opacity(
+        opacity: animation.get('opacity'),
         child: Transform.translate(
           offset: Offset(
-            animation.get(AniProps.offset),
+            animation.get('offset'),
             0,
           ),
           child: child,
