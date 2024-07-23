@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:practice_ui/helper/config/themes/app_text_style.dart';
@@ -35,8 +36,12 @@ import 'package:practice_ui/screen/Widget%20Learning/9.%20RotatedBox/testRotated
 import 'package:practice_ui/screen/appWithIndicator/appWithIndicator.dart';
 import 'package:practice_ui/screen/buttonAnimation/buttonAnimation.dart';
 import 'package:practice_ui/screen/carousel/carousel.dart';
+import 'package:practice_ui/screen/chatApp/screens/auth.dart';
+import 'package:practice_ui/screen/chatApp/screens/chat.dart';
+import 'package:practice_ui/screen/chatApp/screens/splash.dart';
 import 'package:practice_ui/screen/e-commerce/e-commerce.dart';
 import 'package:practice_ui/screen/expenseTrackerApp/expenseTracker.dart';
+import 'package:practice_ui/screen/favoritePlacesApp/screens/places.dart';
 import 'package:practice_ui/screen/flipCardGame/FlipCardMemoryGame.dart';
 import 'package:practice_ui/screen/foodDelivery/foodDelivery.dart';
 import 'package:practice_ui/screen/googleMap/GoogleMap.dart';
@@ -72,11 +77,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<bool> _isOpen = [
-    false,
-    false,
-    false,
-    false,
-    false,
+    true,
+    true,
+    true,
+    true,
+    true,
   ];
   final game = FirstGame();
 
@@ -111,10 +116,10 @@ class _HomePageState extends State<HomePage> {
               height: 20,
             ),
             ExpansionPanelList(
-              animationDuration: Duration(milliseconds: 500),
+              animationDuration: const Duration(milliseconds: 500),
               dividerColor: Colors.grey.shade50,
               elevation: 1,
-              expandedHeaderPadding: EdgeInsets.all(0),
+              expandedHeaderPadding: const EdgeInsets.all(0),
               children: [
                 ExpansionPanel(
                   canTapOnHeader: true,
@@ -130,127 +135,150 @@ class _HomePageState extends State<HomePage> {
                   },
                   body: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      RouteText(
+                    children: [
+                      const RouteText(
                         text: "Inspiration App",
                         number: 1,
                         page: Inspiration(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "PageAnimation Trip",
                         number: 2,
                         page: PageAnimation(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Food Delivery App",
                         number: 3,
                         page: StarterPage(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "User Profile App",
                         number: 4,
                         page: UserProflie(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Ripple Animation",
                         number: 5,
                         page: RippleAnimation(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "PageTransition Trip",
                         number: 6,
                         page: PageTransition(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Button Animation",
                         number: 7,
                         page: ButtonAnimation(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Splash and Login App",
                         number: 8,
                         page: SplashAndLogin(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Party App & Splash",
                         number: 9,
                         page: PartyAndSplash(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Travel App",
                         number: 10,
                         page: TravelPage(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Login Page 1",
                         number: 11,
                         page: LoginPage1(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Login Page 2",
                         number: 12,
                         page: LoginPage2(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Shoe Shopping App",
                         number: 13,
                         page: ShoeShop(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "E-commerce App",
                         number: 14,
                         page: EComApp(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Carousel & Animation",
                         number: 15,
                         page: CarouselTest(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Socks Shop App",
                         number: 16,
                         page: SocksShop(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "App With Indicator",
                         number: 17,
                         page: AppWithIndicator(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Login And SignUp Page",
                         number: 18,
                         page: MainLoginNSignUp(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Home Services App",
                         number: 19,
                         page: StartPage(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Wallet App",
                         number: 20,
                         page: WalletApp(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Clipper Practice",
                         number: 21,
                         page: ClipperTest(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text:
                             "Expense(Array Function & Create Chart without lib)",
                         number: 22,
                         page: Expenses(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Todo App(Key Uesable)",
                         number: 23,
                         page: Keys(),
                       ),
-                      RouteText(
+                      const RouteText(
                         text: "Meal App(Navigate & Animation)",
-                        number: 23,
+                        number: 24,
                         page: TabsScreen(),
+                      ),
+                      const RouteText(
+                        text: "Favorite Place App(Device Service)",
+                        number: 25,
+                        page: PlacesSceen(),
+                      ),
+                      RouteText(
+                        text: "Chat App(Firebase testing)",
+                        number: 26,
+                        page: StreamBuilder(
+                          stream: FirebaseAuth.instance.authStateChanges(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const SplashScreen();
+                            }
+                            if (snapshot.hasData) {
+                              return const ChatScreen();
+                            }
+
+                            return const AuthScreen();
+                          },
+                        ),
                       ),
                     ],
                   ),
@@ -474,7 +502,7 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      RouteText(
+                      const RouteText(
                         text: "FlipCard Memory Game",
                         number: 1,
                         page: FlipCardGameHOme(),

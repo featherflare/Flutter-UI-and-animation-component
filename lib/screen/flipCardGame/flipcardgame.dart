@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flip_card/flip_card.dart';
-import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'data.dart';
 
@@ -123,11 +122,11 @@ class _FlipCardGameState extends State<FlipCardGame> {
                       child: _time > 0
                           ? Text(
                               '$_time',
-                              style: Theme.of(context).textTheme.headline3,
+                              style: Theme.of(context).textTheme.headlineMedium,
                             )
                           : Text(
                               'Left:$_left',
-                              style: Theme.of(context).textTheme.headline3,
+                              style: Theme.of(context).textTheme.headlineMedium,
                             ),
                     ),
                     Padding(

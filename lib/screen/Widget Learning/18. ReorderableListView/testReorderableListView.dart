@@ -25,7 +25,10 @@ class _TestReorderableListViewState extends State<TestReorderableListView> {
                   ? Colors.blue.withOpacity((index + 1) * 0.02)
                   : Colors.green.withOpacity((index) * 0.02),
               title: Text('Item ${_items[index]}'),
-              trailing: const Icon(Icons.drag_handle),
+              trailing: Container(
+                padding: EdgeInsets.all(16),
+                child: const Icon(Icons.drag_handle),
+              ),
             ),
         ],
         onReorder: (int oldIndex, int newIndex) {

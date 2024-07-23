@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:practice_ui/screen/mealsApp/models/meal.dart';
+import 'package:practice_ui/screen/mealsApp/providers/favorites_provider.dart';
+import 'package:provider/provider.dart';
 
 class MealDetailsScreen extends StatelessWidget {
   const MealDetailsScreen({
     super.key,
     required this.meal,
-    required this.onToggleFavorite,
   });
 
   final Meal meal;
-  final void Function(Meal meal) onToggleFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,17 @@ class MealDetailsScreen extends StatelessWidget {
             actions: [
               IconButton(
                 onPressed: () {
-                  onToggleFavorite(meal);
+                  final wasAdded = context
+                      .read<FavoriteMeals>()
+                      .toggleMealFavoriteStatus(meal);
+                  ScaffoldMessenger.of(context).clearSnackBars();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(wasAdded
+                          ? 'Meal is no longer a favorite.'
+                          : 'Marked as a favorite!'),
+                    ),
+                  );
                 },
                 icon: const Icon(Icons.star),
               )

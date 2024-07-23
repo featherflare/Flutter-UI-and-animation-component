@@ -26,8 +26,6 @@ class _TestRefreshIndicatorState extends State<TestRefreshIndicator> {
         color: Colors.white,
         backgroundColor: Colors.blue,
         child: Scrollbar(
-          isAlwaysShown: true,
-          showTrackOnHover: true,
           child: ListView.builder(
             itemCount: 25,
             itemBuilder: (BuildContext context, int index) {
