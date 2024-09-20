@@ -25,6 +25,7 @@ import 'package:practice_ui/screen/Widget%20Learning/15.%20AnimatedCrossFade/tes
 import 'package:practice_ui/screen/Widget%20Learning/16.%20IndexedStack/testIndexedStack.dart';
 import 'package:practice_ui/screen/Widget%20Learning/17.%20AnimatedSwitcher/testAnimatedSwitcher.dart';
 import 'package:practice_ui/screen/Widget%20Learning/18.%20ReorderableListView/testReorderableListView.dart';
+import 'package:practice_ui/screen/Widget%20Learning/19.%20CarouselView/testCarouselView.dart';
 import 'package:practice_ui/screen/Widget%20Learning/2.%20AutoComplete/testAutoComplete.dart';
 import 'package:practice_ui/screen/Widget%20Learning/3.%20NavigationRail/testNavigationRail.dart';
 import 'package:practice_ui/screen/Widget%20Learning/4.%20FocusableActionDetector/testFocusableActionDetector.dart';
@@ -44,14 +45,11 @@ import 'package:practice_ui/screen/expenseTrackerApp/expenseTracker.dart';
 import 'package:practice_ui/screen/favoritePlacesApp/screens/places.dart';
 import 'package:practice_ui/screen/flipCardGame/FlipCardMemoryGame.dart';
 import 'package:practice_ui/screen/foodDelivery/foodDelivery.dart';
-import 'package:practice_ui/screen/googleMap/GoogleMap.dart';
-import 'package:practice_ui/screen/googleMap/pages/map_circles.dart';
 import 'package:practice_ui/screen/homeService/page/start.dart';
 import 'package:practice_ui/screen/inspiration/inspiration.dart';
 import 'package:practice_ui/screen/loginPage/loginPage1.dart';
 import 'package:practice_ui/screen/loginPage/loginPage2.dart';
 import 'package:practice_ui/screen/matrix4Test/matrix4Test1.dart';
-import 'package:practice_ui/screen/mealsApp/screens/categories.dart';
 import 'package:practice_ui/screen/mealsApp/screens/tabs.dart';
 import 'package:practice_ui/screen/pageAnimation/pageAnimation.dart';
 import 'package:practice_ui/screen/pageTransition/pageTransition.dart';
@@ -65,6 +63,7 @@ import 'package:practice_ui/screen/travel/travel.dart';
 import 'package:practice_ui/screen/userProfile/userProfile.dart';
 import 'package:practice_ui/screen/wallet/wallet.dart';
 import 'package:practice_ui/screen/webView/webView.dart';
+import 'package:practice_ui/screen/widgetAnimation/AnimationFlutterWidget/FlutterAnimationWidget.dart';
 import 'package:practice_ui/screen/widgetAnimation/widgetAnimation.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -296,9 +295,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   },
-                  body: Column(
+                  body: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       RouteText(
                         text: "TextStyle",
                         number: 1,
@@ -389,6 +388,11 @@ class _HomePageState extends State<HomePage> {
                         number: 18,
                         page: TestReorderableListView(),
                       ),
+                      RouteText(
+                        text: "CarouselView",
+                        number: 19,
+                        page: TestCarouselView(),
+                      ),
                     ],
                   ),
                   isExpanded: _isOpen[1],
@@ -405,9 +409,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   },
-                  body: Column(
+                  body: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       RouteText(
                         text: "ConcentricTransition",
                         number: 1,
@@ -444,9 +448,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   },
-                  body: Column(
+                  body: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       RouteText(
                         text: "Widget Animation",
                         number: 0,
@@ -481,6 +485,11 @@ class _HomePageState extends State<HomePage> {
                         text: "SwapCard",
                         number: 6,
                         page: TestSwapCard(),
+                      ),
+                      RouteText(
+                        text: "Animation Flutter Widget",
+                        number: 7,
+                        page: FlutterAnimationWidget(),
                       ),
                     ],
                   ),
@@ -523,7 +532,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
               expansionCallback: (i, isOpen) => setState(() {
-                _isOpen[i] = !isOpen;
+                _isOpen[i] = isOpen;
               }),
             ),
           ],

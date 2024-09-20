@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -82,4 +83,16 @@ class RouteText2 extends StatelessWidget {
       ),
     );
   }
+}
+
+class MyUtility {
+  BuildContext context;
+
+  MyUtility(this.context);
+
+  Size get size => kIsWeb && MediaQuery.of(context).size.width >= 1024
+      ? Size(1024, MediaQuery.of(context).size.height)
+      : MediaQuery.of(context).size;
+
+  double get safePadding => MediaQuery.of(context).padding.top;
 }

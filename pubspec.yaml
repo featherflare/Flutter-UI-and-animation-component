@@ -37,7 +37,7 @@ dependencies:
   scrollable_positioned_list: ^0.3.2
   iconsax: ^0.0.8
   align_positioned: ^4.0.1
-  pattern_formatter: ^3.0.0
+  pattern_formatter: ^4.0.0
   custom_info_window: ^1.0.1
   google_maps_flutter: ^2.1.12
   concentric_transition: ^1.0.3
@@ -53,19 +53,19 @@ dependencies:
   webview_flutter_android: ^3.3.2
   path_provider: ^2.0.13
   uuid: ^4.1.0
-  intl: ^0.18.1
+  intl: ^0.19.0
   transparent_image: ^2.0.1
   provider: ^6.0.5
   image_picker: ^1.0.4
-  location: ^6.0.2
+  location: ^7.0.0
   path: ^1.8.2
   sqflite: ^2.2.8
   http: ^1.2.1
-  firebase_core: ^2.24.2
-  firebase_auth: ^4.17.8
-  firebase_storage: ^11.2.8
-  cloud_firestore: ^4.15.8
-  firebase_messaging: ^14.7.19
+  firebase_core: ^3.4.0
+  firebase_auth: ^5.2.0
+  firebase_storage: ^12.2.0
+  cloud_firestore: ^5.4.0
+  firebase_messaging: ^15.1.0
   # flutter_riverpod: ^2.4.3
 
 dev_dependencies:

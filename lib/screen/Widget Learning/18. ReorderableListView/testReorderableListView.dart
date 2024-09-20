@@ -20,7 +20,7 @@ class _TestReorderableListViewState extends State<TestReorderableListView> {
         children: [
           for (int index = 0; index < _items.length; index++)
             ListTile(
-              key: ValueKey(index),
+              key: Key('$index'),
               tileColor: _items[index].isOdd
                   ? Colors.blue.withOpacity((index + 1) * 0.02)
                   : Colors.green.withOpacity((index) * 0.02),
